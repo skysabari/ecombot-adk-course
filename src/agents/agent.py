@@ -1,2 +1,3 @@
-# ecombot/src/agents/agent.py
-from .support_agent import root_agent
+from src.agents.support_agent import root_agent
+
+__all__ = ["root_agent"]
