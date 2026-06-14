@@ -1,0 +1,126 @@
+[
+  {
+    "product_id": "PRD-101",
+    "name": "Wireless Noise-Cancelling Headphones",
+    "category": "Audio",
+    "price": 129.99,
+    "description": "Over-ear headphones with 30hr battery and active noise cancellation.",
+    "specs": {
+      "battery_life": "30 hours",
+      "connectivity": "Bluetooth 5.2, 3.5mm jack",
+      "noise_cancellation": "Active Noise Cancellation (ANC)",
+      "weight": "250g",
+      "charging": "USB-C, 2hr full charge",
+      "foldable": true
+    },
+    "shipping": {
+      "weight_kg": 0.5,
+      "dimensions_cm": "20x18x10",
+      "estimated_delivery_days": 3,
+      "free_shipping_eligible": true
+    },
+    "warranty": {
+      "duration_months": 12,
+      "coverage": "Manufacturing defects, hardware failure",
+      "excludes": "Physical damage, water damage, lost accessories"
+    },
+    "support_notes": "If ANC is not working, reset the headphones by holding the power button for 10 seconds. For Bluetooth pairing issues, forget the device and re-pair."
+  },
+  {
+    "product_id": "PRD-102",
+    "name": "Mechanical Keyboard — TKL",
+    "category": "Peripherals",
+    "price": 89.99,
+    "description": "Tenkeyless mechanical keyboard with Cherry MX Brown switches.",
+    "specs": {
+      "switch_type": "Cherry MX Brown",
+      "layout": "Tenkeyless (TKL)",
+      "backlight": "RGB per-key",
+      "connectivity": "USB-C detachable cable",
+      "n_key_rollover": true,
+      "keycap_material": "PBT double-shot"
+    },
+    "shipping": {
+      "weight_kg": 0.9,
+      "dimensions_cm": "36x14x4",
+      "estimated_delivery_days": 3,
+      "free_shipping_eligible": true
+    },
+    "warranty": {
+      "duration_months": 24,
+      "coverage": "Switch failure, PCB defects, backlight failure",
+      "excludes": "Keycap wear, liquid damage, physical damage"
+    },
+    "support_notes": "RGB lighting can be configured via the bundled software. If keys are not registering, try a different USB port or replace the USB-C cable."
+  },
+  {
+    "product_id": "PRD-103",
+    "name": "USB-C 4-Port Hub",
+    "category": "Accessories",
+    "price": 34.99,
+    "description": "Compact hub with 2x USB-A, 1x USB-C PD 100W, 1x HDMI 4K.",
+    "specs": {
+      "ports": ["2x USB-A 3.0", "1x USB-C PD 100W", "1x HDMI 4K@30Hz"],
+      "max_power_delivery": "100W",
+      "hdmi_resolution": "4K at 30Hz",
+      "cable_length_cm": 20,
+      "plug_and_play": true
+    },
+    "shipping": {
+      "weight_kg": 0.1,
+      "dimensions_cm": "10x4x2",
+      "estimated_delivery_days": 2,
+      "free_shipping_eligible": true
+    },
+    "warranty": {
+      "duration_months": 12,
+      "coverage": "Port failure, overheating defects",
+      "excludes": "Physical damage, bent ports"
+    },
+    "support_notes": "If HDMI output is not detected, ensure your laptop supports DisplayPort Alt Mode over USB-C. Power delivery requires a compatible charger connected to the USB-C PD port."
+  },
+  {
+    "product_id": "PRD-104",
+    "name": "Ergonomic Laptop Stand",
+    "category": "Accessories",
+    "price": 49.99,
+    "description": "Aluminium adjustable stand, fits laptops 11–17 inch.",
+    "specs": {
+      "material": "Aluminium alloy",
+      "adjustable_height": true,
+      "height_range_cm": "6–20",
+      "compatible_sizes": "11–17 inch laptops",
+      "foldable": true,
+      "max_load_kg": 8
+    },
+    "shipping": {
+      "weight_kg": 0.6,
+      "dimensions_cm": "28x22x3",
+      "estimated_delivery_days": 3,
+      "free_shipping_eligible": true
+    },
+    "warranty": {
+      "duration_months": 12,
+      "coverage": "Structural defects, hinge failure",
+      "excludes": "Scratches, cosmetic damage"
+    },
+    "support_notes": "Currently out of stock. Expected restock in 2–3 weeks. Customers can request a restock notification by contacting support."
+  },
+  {
+    "product_id": "PRD-105",
+    "name": "Bluetooth Speaker Mini",
+    "category": "Audio",
+    "price": 29.99,
+    "description": "Discontinued model — replaced by PRD-106.",
+    "specs": {
+      "status": "discontinued"
+    },
+    "shipping": null,
+    "warranty": {
+      "duration_months": 0,
+      "coverage": "No warranty — discontinued product",
+      "excludes": "All claims"
+    },
+    "support_notes": "This product has been discontinued. Customers with existing units can still contact support for troubleshooting within 6 months of purchase date."
+  }
+]

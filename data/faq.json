@@ -1,0 +1,98 @@
+[
+  {
+    "id": "faq-001",
+    "category": "Orders",
+    "question": "How do I check the status of my order?",
+    "answer": "You can check your order status by providing your order ID (e.g. ORD-001) to our support assistant. Order IDs are included in your confirmation email. Status values are: processing, shipped, delivered, cancelled, or refunded."
+  },
+  {
+    "id": "faq-002",
+    "category": "Orders",
+    "question": "Can I cancel my order?",
+    "answer": "Orders can be cancelled if they are in 'processing' status. Once an order has been shipped, it can no longer be cancelled — you would need to request a return after delivery. Delivered and refunded orders cannot be cancelled."
+  },
+  {
+    "id": "faq-003",
+    "category": "Orders",
+    "question": "How long does delivery take?",
+    "answer": "Standard delivery takes 2–3 business days for most products. Accessories like the USB-C hub typically arrive in 2 days. Larger items like keyboards and headphones arrive in 3 days. You will receive a tracking number once your order is shipped."
+  },
+  {
+    "id": "faq-004",
+    "category": "Orders",
+    "question": "Is shipping free?",
+    "answer": "All products in our catalogue are eligible for free standard shipping. Express shipping is available at checkout for an additional fee."
+  },
+  {
+    "id": "faq-005",
+    "category": "Returns",
+    "question": "What is your return policy?",
+    "answer": "We accept returns within 30 days of delivery for unused items in original packaging. To initiate a return, contact support with your order ID. Refunds are processed within 5–7 business days after the item is received."
+  },
+  {
+    "id": "faq-006",
+    "category": "Returns",
+    "question": "How do I return a defective product?",
+    "answer": "If your product arrives defective, contact support within 14 days of delivery with your order ID and a description of the defect. We will arrange a free return and send a replacement or issue a full refund."
+  },
+  {
+    "id": "faq-007",
+    "category": "Warranty",
+    "question": "What does the warranty cover?",
+    "answer": "Warranty coverage varies by product. Headphones and hubs carry a 12-month warranty covering manufacturing defects. Keyboards carry a 24-month warranty covering switch and PCB defects. Warranty does not cover physical damage, liquid damage, or lost accessories."
+  },
+  {
+    "id": "faq-008",
+    "category": "Warranty",
+    "question": "How do I make a warranty claim?",
+    "answer": "To make a warranty claim, contact support with your order ID, a description of the issue, and photos if possible. We will assess the claim and respond within 2 business days. Valid claims result in a free repair, replacement, or refund at our discretion."
+  },
+  {
+    "id": "faq-009",
+    "category": "Products",
+    "question": "Are the headphones compatible with iPhone and Android?",
+    "answer": "Yes. The Wireless Noise-Cancelling Headphones (PRD-101) connect via Bluetooth 5.2 and are compatible with all modern smartphones including iPhone and Android. They also include a 3.5mm jack for wired use."
+  },
+  {
+    "id": "faq-010",
+    "category": "Products",
+    "question": "Does the USB-C hub work with MacBook?",
+    "answer": "Yes. The USB-C 4-Port Hub (PRD-103) is plug-and-play on macOS. For HDMI output to work on MacBook, your model must support DisplayPort Alt Mode over USB-C. Most MacBook Pro and MacBook Air models from 2018 onwards are compatible."
+  },
+  {
+    "id": "faq-011",
+    "category": "Products",
+    "question": "Is the laptop stand compatible with MacBook Pro 16 inch?",
+    "answer": "Yes. The Ergonomic Laptop Stand (PRD-104) supports laptops from 11 to 17 inches and can hold up to 8kg. It is compatible with MacBook Pro 16 inch. Note: this product is currently out of stock."
+  },
+  {
+    "id": "faq-012",
+    "category": "Products",
+    "question": "What switch type does the mechanical keyboard use?",
+    "answer": "The Mechanical Keyboard TKL (PRD-102) uses Cherry MX Brown switches. These are tactile switches with a soft bump at the actuation point, making them suitable for both typing and gaming. They are quieter than clicky switches like Cherry MX Blue."
+  },
+  {
+    "id": "faq-013",
+    "category": "Account",
+    "question": "How do I update my delivery address?",
+    "answer": "Delivery addresses can only be updated before an order is shipped. Contact support with your order ID as soon as possible and we will attempt to update the address. Once an order is shipped, the address cannot be changed."
+  },
+  {
+    "id": "faq-014",
+    "category": "Account",
+    "question": "I did not receive a confirmation email. What should I do?",
+    "answer": "Check your spam or junk folder first. If the email is not there, contact support with the email address used at checkout and we will resend the confirmation and your order details."
+  },
+  {
+    "id": "faq-015",
+    "category": "Payments",
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit and debit cards (Visa, Mastercard, Amex), PayPal, and Apple Pay. All transactions are secured with 256-bit SSL encryption."
+  },
+  {
+    "id": "faq-016",
+    "category": "Payments",
+    "question": "When will I be charged?",
+    "answer": "Your payment is charged at the time of order placement. If your order is cancelled before shipping, a full refund is issued to your original payment method within 3–5 business days."
+  }
+]
