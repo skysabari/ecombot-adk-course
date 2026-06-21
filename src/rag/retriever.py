@@ -33,6 +33,8 @@ def _get_collection():
         )
 
     api_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPENROUTER_API_KEY")
+    openrouter_key = os.getenv("OPENROUTER_API_KEY")
+
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY or OPENROUTER_API_KEY must be set in .env")
 
@@ -40,12 +42,13 @@ def _get_collection():
     return client.get_collection(
         name=COLLECTION_NAME,
         embedding_function=OpenAIEmbeddingFunction(
-            api_key=api_key,
+            api_key=openrouter_key,
+            api_base="https://openrouter.ai/api/v1",
             model_name="text-embedding-3-small",
         ),
     )
 
-MINIMUM_SCORE = 0.65  # chunks below this are too weak to ground an answer
+MINIMUM_SCORE = 0.4  # chunks below this are too weak to ground an answer
 
 def retrieve(query: str, n_results: int = 3) -> list[dict]:
     """
@@ -77,7 +80,7 @@ def retrieve(query: str, n_results: int = 3) -> list[dict]:
         chunks = _format(results)
 
         # Filter weak matches
-        strong_chunks = [c for c in chunks if c["score"] >= 0.65]
+        strong_chunks = [c for c in chunks if c["score"] >= MINIMUM_SCORE]
 
         if not strong_chunks:
             log.info("No chunks above threshold for query: %s", query)
@@ -125,3 +128,21 @@ if __name__ == "__main__":
             print(f"Score: {chunk['score']} | Type: {chunk['metadata'].get('chunk_type', 'faq')}")
             print(chunk["text"][:200])
             print()
+
+openai_key = os.getenv('OPENAI_API_KEY')
+openrouter_key = os.getenv('OPENROUTER_API_KEY')
+
+if openai_key:
+    ef = OpenAIEmbeddingFunction(api_key=openai_key, model_name='text-embedding-3-small')
+else:
+    ef = OpenAIEmbeddingFunction(api_key=openrouter_key, api_base='https://openrouter.ai/api/v1', model_name='openai/text-embedding-3-small')
+
+client = chromadb.PersistentClient(path=str(Path('../.chromadb')))
+col = client.get_collection('ecombot_kb', embedding_function=ef)
+
+results = col.query(query_texts=['What is the return policy?'], n_results=3)
+for doc, dist in zip(results['documents'][0], results['distances'][0]):
+    score = round(1 - dist, 4)
+    print(f'Score: {score}')
+    print(doc[:150])
+    print()

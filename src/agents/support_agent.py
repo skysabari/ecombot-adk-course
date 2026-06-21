@@ -52,7 +52,7 @@ def search_knowledge_base(query: str) -> dict:
     """
     try:
         from rag.retriever import retrieve
-        chunks = retrieve(query, x=3)
+        chunks = retrieve(query, n_results=3)
 
         if not chunks:
             return {
