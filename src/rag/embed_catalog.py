@@ -42,14 +42,22 @@ load_dotenv(BASE_DIR / ".env")
 # ---------------------------------------------------------------------------
 
 def get_embedding_function():
-    api_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPENROUTER_API_KEY")
-    if not api_key:
-        raise RuntimeError("OPENAI_API_KEY or OPENROUTER_API_KEY must be set in .env")
+    openai_key = os.getenv("OPENAI_API_KEY")
+    openrouter_key = os.getenv("OPENROUTER_API_KEY")
 
-    return OpenAIEmbeddingFunction(
-        api_key=api_key,
-        model_name="text-embedding-3-small",
-    )
+    if openai_key:
+        return OpenAIEmbeddingFunction(
+            api_key=openai_key,
+            model_name="text-embedding-3-small",
+        )
+    elif openrouter_key:
+        return OpenAIEmbeddingFunction(
+            api_key=openrouter_key,
+            api_base="https://openrouter.ai/api/v1",
+            model_name="openai/text-embedding-3-small",
+        )
+    else:
+        raise RuntimeError("No OPENAI_API_KEY or OPENROUTER_API_KEY found in .env")
 
 
 # ---------------------------------------------------------------------------
