@@ -1,0 +1,61 @@
+# litellm_config.yaml
+# LiteLLM proxy configuration for ecombot v4
+#
+# Run with:
+#   litellm --config litellm_config.yaml --port 4000
+#
+# Two logical model groups:
+#   fast-faq      — lightweight model for simple queries
+#   deep-support  — capable model for complex/multi-step queries
+# Each group has a fallback so requests don't fail outright.
+
+model_list:
+  # ── fast-faq group ─────────────────────────────────────────────
+  - model_name: fast-faq
+    litellm_params:
+      model: openrouter/google/gemini-2.5-flash-lite
+      api_key: os.environ/OPENROUTER_API_KEY
+      api_base: https://openrouter.ai/api/v1
+      max_tokens: 512
+      temperature: 0.3
+
+  # ── deep-support group ─────────────────────────────────────────
+  - model_name: deep-support
+    litellm_params:
+      model: openrouter/google/gemini-2.5-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      api_base: https://openrouter.ai/api/v1
+      max_tokens: 2048
+      temperature: 0.5
+
+  # ── fallback target — simple general-purpose model ──────────────
+  - model_name: general-fallback
+    litellm_params:
+      model: openrouter/google/gemini-2.5-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      api_base: https://openrouter.ai/api/v1
+      max_tokens: 1024
+      temperature: 0.4
+
+litellm_settings:
+  drop_params: true
+  num_retries: 2
+  request_timeout: 30
+
+general_settings:
+  master_key: "sk-1234"  # Simple key for local development
+  # Disable authentication checks for local dev
+  disable_spend_logs: true
+  disable_reset_budget: true
+
+router_settings:
+  # Fallback chain — Task 4.4
+  # If fast-faq fails or times out, retry on deep-support.
+  # If deep-support fails, fall back to general-fallback.
+  fallbacks:
+    - fast-faq: ["deep-support"]
+    - deep-support: ["general-fallback"]
+
+  # How many times to retry the primary model before falling back
+  num_retries: 2
+  timeout: 15

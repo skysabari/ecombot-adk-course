@@ -23,6 +23,7 @@ from config.settings import APP_NAME, MODEL
 from tools.order_tools import get_order_status, cancel_order
 from tools.product_tools import get_product_details, check_stock
 from services.history_service import record_turn
+from config.settings import APP_NAME, MODEL, LITELLM_PROXY_BASE, USE_LITELLM_PROXY
 
 litellm.suppress_debug_info = True
 
@@ -127,10 +128,18 @@ _INSTRUCTION += """
 # ---------------------------------------------------------------------------
 # Agent
 # ---------------------------------------------------------------------------
-
+if USE_LITELLM_PROXY:
+    agent_model = LiteLlm(
+        model="fast-faq",   # default route — Task 4.3 will make this dynamic
+        api_base=LITELLM_PROXY_BASE,
+        api_key="sk-1234",  # Must match master_key in litellm_config.yaml
+    )
+else:
+    agent_model = LiteLlm(model=MODEL)
+    
 root_agent = LlmAgent(
     name=APP_NAME,
-    model=LiteLlm(model=MODEL),
+    model=agent_model,  # Fixed: use agent_model instead of hardcoded LiteLlm
     description="A formal, professional e-commerce customer support assistant",
     instruction=_INSTRUCTION,
     tools=[
@@ -170,15 +179,23 @@ async def main():
 
         record_turn(session_id, user_id, "user", prompt)
 
-        async for event in runner.run_async(
-            user_id=user_id,
-            session_id=session_id,
-            new_message=types.Content(role="user", parts=[types.Part(text=prompt)])
-        ):
-            if event.is_final_response():
-                response_text = event.content.parts[0].text
-                print(f"\nAgent: {response_text}\n")
-                record_turn(session_id, user_id, "assistant", response_text)
+        try:
+            async for event in runner.run_async(
+                user_id=user_id,
+                session_id=session_id,
+                new_message=types.Content(role="user", parts=[types.Part(text=prompt)])
+            ):
+                if event.is_final_response():
+                    # Check if content exists before accessing it
+                    if event.content and hasattr(event.content, 'parts') and event.content.parts:
+                        response_text = event.content.parts[0].text
+                        print(f"\nAgent: {response_text}\n")
+                        record_turn(session_id, user_id, "assistant", response_text)
+                    else:
+                        print(f"\n⚠️  Agent encountered an error. Please try again.\n")
+        except Exception as e:
+            print(f"\n❌ Error: {str(e)}\n")
+            continue
 
 
 if __name__ == "__main__":

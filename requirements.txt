@@ -1,1 +1,14 @@
+# Core ADK and LLM dependencies
+google-adk>=2.1.0
+litellm>=1.83.0
+python-dotenv>=1.2.0
+
+# RAG and embeddings
 chromadb
+
+# Database
+psycopg2-binary
+redis
+
+# HTTP and utilities
+requests
